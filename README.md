@@ -31,8 +31,17 @@ toString som returnerar attributet namn. Se koden nedan.
                 '}';
     }
 ```
-
+Därefter skapade jag en ArrayList "mountains" för att lagra Mountain-objekt i MainActivity.java.
+Jag skapade tre Mountain-objekt som lades till i ArrayListen. För att kontrollera att det fungerade
+loopade jag igenom mountains med en for-loop och skrev ut attributet "namn" för alla tillagda berg
+med hjälp av LogCat.
 ```
+        ArrayList<Mountain> mountains = new ArrayList<>(Arrays.asList(new Mountain("Kinnekulle"),
+        new Mountain("Billingen"), new Mountain("Mösseberg")));
+
+        for(int i=0; i<mountains.size(); i++) {
+            Log.d("Berg", mountains.get(i).toString());
+        }
 ```
 
 
