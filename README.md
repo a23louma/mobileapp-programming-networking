@@ -43,8 +43,28 @@ med hjälp av LogCat.
             Log.d("Berg", mountains.get(i).toString());
         }
 ```
+Därefter lade jag till en RecyclerView i activity_main.xml.
+```
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+```
+Sedan skapade jag en ny layout-fil och namngav den till "recyclerviewitem". Jag ändrade layout_height.
+Se koden nedan.
+```
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
 
-
+</LinearLayout>
+```
 
 Bilder läggs i samma mapp som markdown-filen.
 
