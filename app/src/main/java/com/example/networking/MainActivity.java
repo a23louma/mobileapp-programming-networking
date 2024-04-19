@@ -26,6 +26,12 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
         for(int i=0; i<mountains.size(); i++) {
             Log.d("Berg", mountains.get(i).toString());
         }
+        RecyclerViewAdapter adapter = new RecyclerViewAdapter(this, mountains, new RecyclerViewAdapter.OnClickListener() {
+            @Override
+            public void onClick(Mountain item) {
+                Log.d("Klickat", "mountain");
+            }
+        });
     }
 
     @Override

@@ -73,6 +73,21 @@ se koden nedan.
         android:layout_height="wrap_content"
         android:id="@+id/recycler_view_item_title"/>
 ```
+Därefter skapade jag en RecyclerViewAdapter i MainActivity. Jag behövde skapa klassen RecyclerViewAdapter.
+Se koden nedan.
+```
+        RecyclerViewAdapter adapter = new RecyclerViewAdapter(this, mountains, new RecyclerViewAdapter.OnClickListener() {
+            @Override
+            public void onClick(Mountain item) {
+                Log.d("Klickat", "mountain");
+            }
+        });
+```
+I klassen RecyclerViewAdapter behövde jag extenda klassen med RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>.
+Jag implementerade metoderna som behövde implementeras. Se koden nedan.
+```
+public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>
+```
 Bilder läggs i samma mapp som markdown-filen.
 
 ![](android.png)
