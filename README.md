@@ -65,7 +65,14 @@ Se koden nedan.
 
 </LinearLayout>
 ```
-
+Därefter skapade jag en TextView i "recyclerviewitem" och gav den ett id, "recycler_view_item_title".
+se koden nedan.
+```
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/recycler_view_item_title"/>
+```
 Bilder läggs i samma mapp som markdown-filen.
 
 ![](android.png)
