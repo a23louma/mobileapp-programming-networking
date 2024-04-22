@@ -139,6 +139,22 @@ appen. Se koden nedan.
             title = itemView.findViewById(R.id.recycler_view_item_title);
         }
         ```
+```
+Därefter lade jag in en URL i stringen JSON_URL. Se koden nedan.
+```
+private final String JSON_URL = "https://mobprog.webug.se/json-api?login=brom";
+```
+Jag skapade ett Gson-objekt i metoden OnCreate. Därefter ändrade jag i metoden OnPostExecute för att
+"unmarshall" json-filen till en lista med objekt. Se koden nedan.
+```
+    @Override
+    public void onPostExecute(String json) {
+        Log.d("MainActivity", json);
+        Type type = new TypeToken<ArrayList<RecyclerViewItem>>() {}.getType();
+        ArrayList<RecyclerViewItem> items = gson.fromJson(json, type);
+    }
+```
+
 Bilder läggs i samma mapp som markdown-filen.
 
 ![](android.png)
