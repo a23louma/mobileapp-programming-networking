@@ -1,6 +1,7 @@
 package com.example.networking;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,6 +31,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
+        Log.d("BergView", "holderText: " + holder.title.getText() + " pos:" + position);
         holder.title.setText(items.get(position).getTitle());
     }
 
@@ -44,7 +46,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         ViewHolder(View itemView) {
             super(itemView);
             itemView.setOnClickListener(this);
-            title = itemView.findViewById(R.id.title);
+            title = itemView.findViewById(R.id.recycler_view_item_title);
         }
 
         @Override

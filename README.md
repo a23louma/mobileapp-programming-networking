@@ -129,6 +129,16 @@ adaptern till min view. Se koden nedan.
         view.setLayoutManager(new LinearLayoutManager(this));
         view.setAdapter(adapter);
 ```
+Det uppstod ett problem att appen krashade när den startades. Jag insåg att när titeln för ViewHolder
+hämtades från recyclerviewitem.xml var det fel ID, efter att detta ändrats fungerade det att starta
+appen. Se koden nedan.
+```
+        ViewHolder(View itemView) {
+            super(itemView);
+            itemView.setOnClickListener(this);
+            title = itemView.findViewById(R.id.recycler_view_item_title);
+        }
+        ```
 Bilder läggs i samma mapp som markdown-filen.
 
 ![](android.png)
