@@ -84,9 +84,50 @@ Se koden nedan.
         });
 ```
 I klassen RecyclerViewAdapter behövde jag extenda klassen med RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>.
-Jag implementerade metoderna som behövde implementeras. Se koden nedan.
+Jag implementerade metoderna som behövde implementeras. Jag kopierade koden från Canvas för
+RecyclerViewAdapter. Se koden nedan.
 ```
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>
+```
+
+Därefter skapade jag klassen RecyclerViewItem. Se koden nedan.
+```
+public class RecyclerViewItem {
+private String title;
+
+    public RecyclerViewItem(String title) {
+        this.title = title;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+}
+```
+Därefter ändrade jag i MainActivity för att ha RecyclerViewItem-objekt i ArrayListen istället för
+Mountain-objekt. Se koden nedan.
+```
+ArrayList<RecyclerViewItem> items = new ArrayList<>(Arrays.asList(new RecyclerViewItem("Kinnekulle"),
+new RecyclerViewItem("Billingen"), new RecyclerViewItem("Mösseberg")));
+
+```
+
+Jag ändrade även adaptern i MainActivity för att hantera RecyclerViewItem-objekt istället för
+Mountain-objekt.
+```
+        RecyclerViewAdapter adapter = new RecyclerViewAdapter(this, items, new RecyclerViewAdapter.OnClickListener() {
+            @Override
+            public void onClick(RecyclerViewItem item) {
+                Log.d("Klickat", "mountain");
+            }
+```
+
+I MainActivity lade jag till en RecyclerView och hämtade den med hjälp av findViewById. Jag lade till
+adaptern till min view. Se koden nedan.
+```
+        RecyclerView view = findViewById(R.id.recycler_view);
+        view.setLayoutManager(new LinearLayoutManager(this));
+        view.setAdapter(adapter);
 ```
 Bilder läggs i samma mapp som markdown-filen.
 

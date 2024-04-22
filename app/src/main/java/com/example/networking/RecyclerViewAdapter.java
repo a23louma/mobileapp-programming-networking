@@ -25,7 +25,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     @Override
     @NonNull
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new ViewHolder(layoutInflater.inflate(R.layout.recyclerview_item, parent, false));
+        return new ViewHolder(layoutInflater.inflate(R.layout.recyclerviewitem, parent, false));
     }
 
     @Override

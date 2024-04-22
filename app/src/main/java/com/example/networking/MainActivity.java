@@ -4,13 +4,16 @@ import android.os.Bundle;
 import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
+
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 
 @SuppressWarnings("FieldCanBeLocal")
 public class MainActivity extends AppCompatActivity implements JsonTask.JsonTaskListener {
-
+    private RecyclerViewAdapter adapter;
     private final String JSON_URL = "HTTPS_URL_TO_JSON_DATA_CHANGE_THIS_URL";
     private final String JSON_FILE = "mountains.json";
 
@@ -21,17 +24,22 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
 
         new JsonFile(this, this).execute(JSON_FILE);
 
-        ArrayList<Mountain> mountains = new ArrayList<>(Arrays.asList(new Mountain("Kinnekulle"),new Mountain("Billingen"), new Mountain("Mösseberg")));
+        ArrayList<RecyclerViewItem> items = new ArrayList<>(Arrays.asList(new RecyclerViewItem("Kinnekulle"),new RecyclerViewItem("Billingen"), new RecyclerViewItem("Mösseberg")));
 
-        for(int i=0; i<mountains.size(); i++) {
-            Log.d("Berg", mountains.get(i).toString());
+        for(int i=0; i<items.size(); i++) {
+            Log.d("Berg", items.get(i).toString());
+
+
         }
-        RecyclerViewAdapter adapter = new RecyclerViewAdapter(this, mountains, new RecyclerViewAdapter.OnClickListener() {
+        adapter = new RecyclerViewAdapter(this, items, new RecyclerViewAdapter.OnClickListener() {
             @Override
-            public void onClick(Mountain item) {
+            public void onClick(RecyclerViewItem item) {
                 Log.d("Klickat", "mountain");
             }
         });
+        RecyclerView view = findViewById(R.id.recycler_view);
+        view.setLayoutManager(new LinearLayoutManager(this));
+        view.setAdapter(adapter);
     }
 
     @Override
