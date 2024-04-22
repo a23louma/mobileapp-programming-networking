@@ -154,7 +154,14 @@ Jag skapade ett Gson-objekt i metoden OnCreate. Därefter ändrade jag i metoden
         ArrayList<RecyclerViewItem> items = gson.fromJson(json, type);
     }
 ```
-
+Därefter skapade jag metoden updateData i RecyclerViewAdapter-klassen. Se koden nedan.
+```
+    public void updateData(ArrayList<RecyclerViewItem> newMountainsList) {
+        items.clear();
+        items.addAll(newMountainsList);
+        notifyDataSetChanged();
+    }
+```
 Bilder läggs i samma mapp som markdown-filen.
 
 ![](android.png)

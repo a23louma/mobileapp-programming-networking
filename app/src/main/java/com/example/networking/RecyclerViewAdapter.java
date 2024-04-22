@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import androidx.annotation.NonNull;
@@ -17,7 +18,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     private LayoutInflater layoutInflater;
     private OnClickListener onClickListener;
 
-    RecyclerViewAdapter(Context context, List<RecyclerViewItem> items, OnClickListener onClickListener) {
+    RecyclerViewAdapter(Context context, ArrayList<RecyclerViewItem> items, OnClickListener onClickListener) {
         this.layoutInflater = LayoutInflater.from(context);
         this.items = items;
         this.onClickListener = onClickListener;
@@ -57,5 +58,11 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     public interface OnClickListener {
         void onClick(RecyclerViewItem item);
+    }
+
+    public void updateData(ArrayList<RecyclerViewItem> newMountainsList) {
+        items.clear();
+        items.addAll(newMountainsList);
+        notifyDataSetChanged();
     }
 }
