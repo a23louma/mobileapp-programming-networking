@@ -154,7 +154,8 @@ Jag skapade ett Gson-objekt i metoden OnCreate. Därefter ändrade jag i metoden
         ArrayList<RecyclerViewItem> items = gson.fromJson(json, type);
     }
 ```
-Därefter skapade jag metoden updateData i RecyclerViewAdapter-klassen. Se koden nedan.
+Därefter skapade jag metoden updateData för att "cleara" items och lägga till de nya objekten från
+json i RecyclerViewAdapter-klassen. Se koden nedan.
 ```
     public void updateData(ArrayList<RecyclerViewItem> newMountainsList) {
         items.clear();

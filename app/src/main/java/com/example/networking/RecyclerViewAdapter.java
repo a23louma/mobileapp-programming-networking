@@ -63,6 +63,9 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public void updateData(ArrayList<RecyclerViewItem> newMountainsList) {
         items.clear();
         items.addAll(newMountainsList);
+        Log.d("Berg items_updateData", "" + items.size());
+        for(RecyclerViewItem r : newMountainsList)
+            Log.d("Berg", r.getTitle() + "");
         notifyDataSetChanged();
     }
 }
