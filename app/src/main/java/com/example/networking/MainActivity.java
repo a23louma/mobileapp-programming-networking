@@ -29,16 +29,12 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
         setContentView(R.layout.activity_main);
         gson = new Gson();
 
-        //new JsonFile(this, this).execute(JSON_FILE);
-        //new JsonTask(this).execute(JSON_URL);
-/*
         items = new ArrayList<>(Arrays.asList(new RecyclerViewItem("Kinnekulle"),new RecyclerViewItem("Billingen"), new RecyclerViewItem("Mösseberg")));
-
 
         for(int i=0; i<items.size(); i++) {
             Log.d("Berg", items.get(i).toString() + " " +  items.get(i).getTitle());
 
-        }*/
+        }
         adapter = new RecyclerViewAdapter(this, items, new RecyclerViewAdapter.OnClickListener() {
             @Override
             public void onClick(RecyclerViewItem item) {
