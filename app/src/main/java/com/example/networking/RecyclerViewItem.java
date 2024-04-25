@@ -19,6 +19,18 @@ public class RecyclerViewItem {
         return title;
     }
 
+    public String getLocation() {
+        return location;
+    }
+
+    public int getHeightInMeters() {
+        return heightInMeters;
+    }
+
+    public int getHeightInFeet() {
+        return heightInFeet;
+    }
+
     @Override
     public String toString() {
         return "RecyclerViewItem{" +
