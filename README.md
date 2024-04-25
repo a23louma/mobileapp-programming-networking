@@ -85,7 +85,7 @@ Se koden nedan.
 ```
 I klassen RecyclerViewAdapter behövde jag extenda klassen med RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>.
 Jag implementerade metoderna som behövde implementeras. Jag kopierade koden från Canvas för
-RecyclerViewAdapter. Se koden nedan.
+RecyclerViewAdapter. I samma fil behövde även klassen ViewHolder skapas. Se koden nedan.
 ```
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>
 ```
@@ -140,7 +140,7 @@ appen. Se koden nedan.
         }
         ```
 ```
-Därefter lade jag in en URL i stringen JSON_URL. Se koden nedan.
+Därefter lade jag in en URL i stringen JSON_URL i MainActivity. Se koden nedan.
 ```
 private final String JSON_URL = "https://mobprog.webug.se/json-api?login=brom";
 ```
@@ -154,7 +154,7 @@ Jag skapade ett Gson-objekt i metoden OnCreate. Därefter ändrade jag i metoden
         ArrayList<RecyclerViewItem> items = gson.fromJson(json, type);
     }
 ```
-Därefter skapade jag metoden updateData för att "cleara" items och lägga till de nya objekten från
+Därefter skapade jag metoden updateData för att rensa items och lägga till de nya objekten från
 json i RecyclerViewAdapter-klassen. Se koden nedan.
 ```
     public void updateData(ArrayList<RecyclerViewItem> newMountainsList) {
