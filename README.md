@@ -163,6 +163,22 @@ json i RecyclerViewAdapter-klassen. Se koden nedan.
         notifyDataSetChanged();
     }
 ```
+Sedan lade jag till metoden toString i RecyclerViewItem för att kunna visa namnen på bergen i
+RecyclerView. Se koden nedan.
+```
+    @Override
+    public String toString() {
+        return "RecyclerViewItem{" +
+                "title='" + title + '\'' +
+                '}';
+    }
+```
+Jag fick inte upp bergen på screenen och behövde ändra i RycyclerViewItem och genom att lägga till
+koden nedan fungerade det därefter.
+```
+    @ SerializedName ("name")
+    private String title;
+```
 Bilder läggs i samma mapp som markdown-filen.
 
 ![](android.png)

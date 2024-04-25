@@ -58,12 +58,11 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
     public void onPostExecute(String json) {
         Log.d("Berg MainActivity", json);
         Type type = new TypeToken<ArrayList<RecyclerViewItem>>() {}.getType();
-        //Here is an issue that needs to be fixed
         items = gson.fromJson(json, type);
-        for(RecyclerViewItem r : items)
+        for(RecyclerViewItem r : items) {
             Log.d("Berg_items onPE", r.getTitle() + "");
+        }
         adapter.updateData(items);
         Log.d("Berg items", "" + items.size());
-        //adapter.notifyDataSetChanged();
     }
 }
