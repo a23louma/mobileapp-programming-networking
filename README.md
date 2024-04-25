@@ -192,5 +192,5 @@ RecyclerViewItem. Se koden nedan.
 ```    
 Bifogat i projektet finns en skärmdump från det slutgiltiga resultatet.
 
-![](android.png)
+![](Berg.png)
 
