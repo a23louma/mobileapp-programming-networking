@@ -3,7 +3,8 @@
 
 Jag började med att skapa en Mountain-klass med tre attribut, "namn", "location" och "height".
 Jag skapade två constructors, en med bara namn som parameter och en med namn, location och height 
-som parametrar. Se koden nedan.
+som parametrar. Denna klass kommer senare inte användas, istället kommer en RecyclerViewItem-klass
+skapas. Se koden nedan.
 ```
     private String name;
     private String location;
@@ -84,12 +85,11 @@ Se koden nedan.
         });
 ```
 I klassen RecyclerViewAdapter behövde jag extenda klassen med RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>.
-Jag implementerade metoderna som behövde implementeras. Jag kopierade koden från Canvas för
-RecyclerViewAdapter. I samma fil behövde även klassen ViewHolder skapas. Se koden nedan.
+Jag implementerade metoderna som behövde implementeras. I samma fil behövde även klassen ViewHolder 
+skapas. Jag kopierade koden från Canvas för detta. Se koden nedan.
 ```
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>
 ```
-
 Därefter skapade jag klassen RecyclerViewItem. Se koden nedan.
 ```
 public class RecyclerViewItem {
@@ -111,7 +111,6 @@ ArrayList<RecyclerViewItem> items = new ArrayList<>(Arrays.asList(new RecyclerVi
 new RecyclerViewItem("Billingen"), new RecyclerViewItem("Mösseberg")));
 
 ```
-
 Jag ändrade även adaptern i MainActivity för att hantera RecyclerViewItem-objekt istället för
 Mountain-objekt.
 ```
@@ -121,7 +120,6 @@ Mountain-objekt.
                 Log.d("Klickat", "mountain");
             }
 ```
-
 I MainActivity lade jag till en RecyclerView och hämtade den med hjälp av findViewById. Jag lade till
 adaptern till min view. Se koden nedan.
 ```
@@ -151,11 +149,12 @@ Jag skapade ett Gson-objekt i metoden OnCreate. Därefter ändrade jag i metoden
     public void onPostExecute(String json) {
         Log.d("MainActivity", json);
         Type type = new TypeToken<ArrayList<RecyclerViewItem>>() {}.getType();
-        ArrayList<RecyclerViewItem> items = gson.fromJson(json, type);
+        items = gson.fromJson(json, type);
     }
 ```
-Därefter skapade jag metoden updateData för att rensa items och lägga till de nya objekten från
-json i RecyclerViewAdapter-klassen. Se koden nedan.
+Därefter skapade jag metoden updateData för att tömma items och lägga till de nya objekten från
+json i RecyclerViewAdapter-klassen. Denna metod kallas i metoden onPostExecute i MainActivity.
+Se koden nedan.
 ```
     public void updateData(ArrayList<RecyclerViewItem> newMountainsList) {
         items.clear();
@@ -170,18 +169,28 @@ koden nedan fungerade det därefter.
     private String title;
 ```
 Sedan skapade jag attribut för "location", "heightInMeters" och "heightInFeet" och lade jag till 
-metoden toString i RecyclerViewItem för att kunna visa namnen på bergen i RecyclerView. Se koden nedan.
+metoden toString i RecyclerViewItem för att kunna visa information om bergen i RecyclerView. 
+Se koden nedan.
 ```
+    @Override
     public String toString() {
-        return "RecyclerViewItem{" +
-                "title='" + title + '\'' +
-                ", location='" + location + '\'' +
-                ", heightInMeters=" + heightInMeters +
-                ", heightInFeet=" + heightInFeet +
-                '}';
+        return "Namn: " + title + "\n" +
+                "Plats: " + location + "\n" +
+                "Höjd i meter: " + heightInMeters + "\n" +
+                "Höjd i feet: " + heightInFeet + "\n";
     }
 ```
-Bilder läggs i samma mapp som markdown-filen.
+I RecyclerViewAdapter ändrade jag i metoden onBindViewHolder för att kalla på metoden toString i
+RecyclerViewItem. Se koden nedan.
+```
+    @Override
+    public void onBindViewHolder(ViewHolder holder, int position) {
+        Log.d("BergView", "holderText: " + holder.title.getText() + " pos:" + position);
+        holder.title.setText(items.get(position).getTitle());
+        holder.title.setText(items.get(position).toString());
+    }
+```    
+Bifogat i projektet finns en skärmdump från det slutgiltiga resultatet.
 
 ![](android.png)
 

@@ -34,6 +34,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public void onBindViewHolder(ViewHolder holder, int position) {
         Log.d("BergView", "holderText: " + holder.title.getText() + " pos:" + position);
         holder.title.setText(items.get(position).getTitle());
+        holder.title.setText(items.get(position).toString());
     }
 
     @Override

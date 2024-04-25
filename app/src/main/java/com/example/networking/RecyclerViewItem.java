@@ -33,11 +33,9 @@ public class RecyclerViewItem {
 
     @Override
     public String toString() {
-        return "RecyclerViewItem{" +
-                "title='" + title + '\'' +
-                ", location='" + location + '\'' +
-                ", heightInMeters=" + heightInMeters +
-                ", heightInFeet=" + heightInFeet +
-                '}';
+        return "Namn: " + title + "\n" +
+                "Plats: " + location + "\n" +
+                "Höjd i meter: " + heightInMeters + "\n" +
+                "Höjd i feet: " + heightInFeet + "\n";
     }
 }
